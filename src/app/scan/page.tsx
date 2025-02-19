@@ -1,12 +1,11 @@
 "use client"; 
 import { useState, FormEvent } from 'react';
-import Layout from './components/layout/Layout';
-import HomeComponent from './components/HomeComponent';
+import Layout from '../components/layout/Layout';
+import HomeComponent from '../components/HomeComponent';
 
 type Transaction = {
   version: number;
-  gas_used: number;
-  // Extend this as needed based on your backend response.
+  gas_used: number; 
 };
 
 export default function Home() {
@@ -43,7 +42,7 @@ export default function Home() {
 
   return (
     <Layout>   
-    {/* <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4"> 
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4"> 
       <div className="  p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-4 text-foreground">
           Search Account Address
@@ -93,8 +92,7 @@ export default function Home() {
           </ul>
         </div>
       )}
-    </div> */}
-    <HomeComponent />
+    </div> 
     </Layout>
   );
 }
