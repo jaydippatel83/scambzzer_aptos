@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aptos NFT",
-  description: "Aptos NFT",
+  title: "ScamBuzzer",
+  description: "ScamBuzzer is a platform that helps you detect, alert, and protect crypto users from scams.",
 };
 
 export default function RootLayout({
