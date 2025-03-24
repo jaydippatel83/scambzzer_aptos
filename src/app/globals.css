@@ -81,3 +81,17 @@ html {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+.videoContainer{
+  border: 1px solid #4ade804d;
+}
+
+.download{
+  color: black;
+    background: #4ADE80;
+}
+
+a.px-4.py-2.text-sm.text-foreground.dark\:text-green-300.border.border-transparent.rounded-md.dark\:hover\:bg-green-400\/10.transition-colors.hover\:bg-green-400\/10.download{
+  color: white;
+}
