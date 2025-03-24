@@ -14,9 +14,14 @@ const Navbar = () => {
             </Link>
 
             <div className="flex items-center space-x-4">
-                <Link href="https://drive.google.com/uc?export=download&id=1J4EZTl-iKOHAkL4uVfqVEjzHFU5CNhWe" className="px-4 py-2 text-sm text-foreground dark:text-green-300 border border-transparent rounded-md dark:hover:bg-green-400/10 transition-colors hover:bg-green-400/10" download>
-                   Download
-                </Link>
+            <Link
+              href="https://chromewebstore.google.com/detail/bongbeoheinfbmhcmbipkejailmkmibc/preview?hl=en-GB&authuser=0"
+              className="px-4 py-2 text-sm text-foreground dark:text-green-300 border border-transparent rounded-md dark:hover:bg-green-400/10 transition-colors hover:bg-green-400/10 download"
+              download
+              target="blank"
+            >
+              Download
+            </Link>
             </div>
         </header>
     );
