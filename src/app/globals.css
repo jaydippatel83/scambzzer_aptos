@@ -88,10 +88,10 @@ html {
 }
 
 .download{
-  color: black;
+  color: black !important;
     background: #4ADE80;
 }
 
-a.px-4.py-2.text-sm.text-foreground.dark\:text-green-300.border.border-transparent.rounded-md.dark\:hover\:bg-green-400\/10.transition-colors.hover\:bg-green-400\/10.download{
+a.px-4.py-2.text-sm.text-foreground.dark\:text-green-300.border.border-transparent.rounded-md.dark\:hover\:bg-green-400\/10.transition-colors.hover\:bg-green-400\/10.download :hover{
   color: white;
 }

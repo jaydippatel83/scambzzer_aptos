@@ -88,7 +88,7 @@ export default function HomeComponent() {
             </p>
             <Link
               href="https://chromewebstore.google.com/detail/bongbeoheinfbmhcmbipkejailmkmibc/preview?hl=en-GB&authuser=0"
-              className="px-4 py-2 text-sm text-foreground dark:text-green-300 border border-transparent rounded-md dark:hover:bg-green-400/10 transition-colors hover:bg-green-400/10 download"
+              className="px-4 py-2 text-sm bg-green-500 text-black border border-transparent rounded-md hover:bg-transparent hover:text-green-500 hover:border-green-500 transition-all"
               download
               target="blank"
             >
