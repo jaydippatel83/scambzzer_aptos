@@ -1,102 +1,143 @@
-"use client";
-import { useRouter } from "next/navigation";
-import RadarBackground from "./RadarBackground";
-import Link from "next/link";
+import React from "react";
+import PricingPage from "./Plan";
 
-export default function HomeComponent() {
+
+const LandingPage = () => {
   return (
-    <div className="container mx-auto max-w-5xl section-padding relative">
-      <RadarBackground />
-      <div className="flex flex-col items-center justify-center text-foreground transition duration-3">
-        <h1 className="text-3xl lg:text-4xl font-bold text-center py-5">
-          Your multichain shield against crypto scams. Spot and block threats
-          before it’s too late!
-        </h1>
-        <p className="text-center text-lg">
-          ScamBuzzer is a privacy-first platform that analyses users' emails,
-          social interactions, and crypto transactions to detect and prevent
-          scams without compromising data privacy, powered by TEE and Nillion's
-          Blind Computation.
-        </p>
-        <p className="text-xl text-center mt-2 text-red-600">
-          No more: Phishing, Social impersonation, and transactions with Scam
-          Contracts!
-        </p>
+    <div className="min-h-screen bg-white text-gray-900">
 
-        <div className="flex flex-col items-center justify-center text-foreground transition duration-3 mt-7 videoContainer">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/3CpmH8RaA6c?si=VrYxaNt90E1YI1r6"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen={true}
-          ></iframe>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-10 w-full max-w-7xl px-4">
-          {/* Card 1 */}
-
-          <div className="border border-border-light p-6 rounded-lg text-center hover:border-border-hover transition bg-background z-10">
-            <p className="mb-4">
-              Detects drainer smart contracts and verifies the authenticity of
-              URLs.
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Your Shield Against <br></br> Digital Scams
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-bold">
+              In the digital era, most realize they have been scammed only after it happens. ScamBuzzer detects, alerts, and protects you before it's too late to act.
             </p>
-            <button className="border hover:border-red-600 border-red-600 px-6 py-2 rounded-md text-red-600 hover:bg-red-400/10 hover:text-red-600 transition-colors">
-              🛡️ Wallet Risk Scoring
-            </button>
-          </div>
-
-          <div className="border border-border-light p-6 rounded-lg text-center hover:border-border-hover transition bg-background z-10">
-            <p className="mb-4">
-              Uses Nillion-powered LLM to scan content and prevent scams without
-              ever exposing users’ data.
-            </p>
-            <button className="border hover:border-red-600 border-red-600 px-6 py-2 rounded-md text-red-600 hover:bg-red-400/10 hover:text-red-600 transition-colors">
-              📩 Private DM/Email Scam Detection
-            </button>
-          </div>
-
-          <div className="border border-border-light p-6 rounded-lg text-center hover:border-border-hover transition bg-background z-10">
-            <p className="mb-4">
-              A blind, community contribution to report phishing links and
-              wallet drainers fully anonymously.
-            </p>
-            <button className="border hover:border-red-600 border-red-600 px-6 py-2 rounded-md text-red-600 hover:bg-red-400/10 hover:text-red-600 transition-colors">
-              🕵️‍♂️ Anonymous Scam Reporting
+            <button className="bg-scambuzzer-text font-black text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg inline-flex items-center gap-2 transition-colors">
+            {/* href="https://chromewebstore.google.com/detail/bongbeoheinfbmhcmbipkejailmkmibc/preview?hl=en-GB&authuser=0" */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-download w-5 h-5"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+              Add to Chrome & Brave
             </button>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-6 mt-10 w-full max-w-7xl px-4">
-          <div className="border border-border-light p-6 rounded-lg text-center hover:border-border-hover transition bg-background z-10">
-            <p className="mb-4">
-              With this users can securely bookmark trusted wallet addresses
-              which we we first encrypt through Nillion and then store in
-              Nillion’s secret vault to block copy-paste scams and prevent any
-              malware from altering addresses.
-            </p>
-            <button className="border hover:border-red-600 border-red-600 px-6 py-2 rounded-md text-red-600 hover:bg-red-400/10 hover:text-red-600 transition-colors">
-              🔒 Address Poisoning Protection
-            </button>
-          </div>
+      </section>
 
-          {/* Card 3 */}
-          <div className="border border-border-light p-6 rounded-lg text-center hover:border-border-hover transition bg-background z-10">
-            <p className="mb-4">
-              Get a browser extension that stops you from interacting with
-              phishing URLs and explored contracts.
-            </p>
-            <Link
-              href="https://chromewebstore.google.com/detail/bongbeoheinfbmhcmbipkejailmkmibc/preview?hl=en-GB&authuser=0"
-              className="px-4 py-2 text-sm bg-green-500 text-black border border-transparent rounded-md hover:bg-transparent hover:text-green-500 hover:border-green-500 transition-all"
-              download
-              target="blank"
-            >
-              Download
-            </Link>
+      {/* Protection Features */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-black text-center mb-12">
+            Stay protected from 7+ ways a scammer executes a phishing scam
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Lookalike Website", color: "red" },
+              { title: "Malware Scripts", color: "blue" },
+              { title: "Domain Trust History", color: "green" },
+              { title: "URL Encoding", color: "purple" },
+              { title: "Malicious Redirections", color: "orange" },
+              { title: "Community Discussion Access", color: "red" },
+              { title: "Early Access to New Features", color: "green" },
+              { title: "Special Supporter Badge", color: "blue" },
+            ].map((feature, index) => (
+              <div key={index} className="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow">
+                <div className={`w-8 h-8 mb-4 bg-${feature.color}-500/20 rounded-full flex items-center justify-center`}>
+                  <svg viewBox="0 0 24 24" className={`w-5 h-5 text-${feature.color}-500`}>
+                    <path
+                      fill="currentColor"
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-600">Protecting you from sophisticated scam attempts.</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section id="statistics" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-black text-center mb-12">The Rising Threat of Phishing</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl font-black text-green-500 text-scambuzzer-text mb-2">$2.3B+</div>
+              <p className="text-gray-600">Lost to hacks and scams in 2024 alone</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl font-black text-scambuzzer-text text-green-500 mb-2">$450M+</div>
+              <p className="text-gray-600">Lost to phishing scams specifically</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl font-black text-scambuzzer-text text-green-500 mb-2">#1</div>
+              <p className="text-gray-600">Phishing remains the most effective attack vector</p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl font-black text-scambuzzer-text text-green-500 mb-2">24/7</div>
+              <p className="text-gray-600">Protection needed in digital scams, crypto, and beyond</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+     <PricingPage/>
+
+     
+
+      {/* Call to Action */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Ready to secure your crypto journey?</h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Join thousands of users protecting their assets with ScamBuzzer.
+            </p>
+            <button className="bg-scambuzzer-text text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg font-medium inline-flex items-center gap-2 transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-download w-5 h-5"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+              Download Now
+            </button>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
-}
+};
+
+export default LandingPage;

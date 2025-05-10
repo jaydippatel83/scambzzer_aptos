@@ -1,7 +1,6 @@
 "use client"; 
 import { useState, FormEvent } from 'react';
 import Layout from '../components/layout/Layout';
-import HomeComponent from '../components/HomeComponent';
 
 type Transaction = {
   version: number;
