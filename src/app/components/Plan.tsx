@@ -3,19 +3,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createCheckoutSession } from "@/lib/copperx";
-import LoginModal from "./auth/Login";
-import toast from "react-hot-toast";
+import { fetchCurrentUser, UserData } from "../../lib/auth";
 
 const PricingPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState(null);
-
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
-  const closeLoginModal = () => {
-    setIsLoginModalOpen(false);
-  };
+  const [user, setUser] = useState<UserData | null>(null);
 
   const router = useRouter();
 
@@ -31,33 +24,17 @@ const PricingPage = () => {
       setProducts(data);
     };
     fetchData();
+    fetchCurrentUser().then((user: any) => setUser(user.data));
   }, []);
 
-  
-  const checkoutProduct = async (productId: number, plan: number) => {
+  const checkoutProduct = async (productId: number) => {
     try {
-      setSelectedProductId(productId as any);
-      const email = localStorage.getItem("scambuzzer_email");
-
-      if (!email) {
-        // Save selected plan in localStorage
-        localStorage.setItem("selected_plan", JSON.stringify(plan));
-        // Show login modal 
-        setIsLoginModalOpen(true);
-        return;
-      }
-    
-      startPayment(productId);
+      // check if user have logged in.....
+      let checkoutUrl = `https://test.checkout.dodopayments.com/buy/${productId}?quantity=1&metadata_plan=2&metadata_userId=${user?.id}&redirect_url=${process.env.NEXT_PUBLIC_BASE_URL}`;
+      router.push(checkoutUrl);
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const startPayment = async (productId: number) => {
-  
-    const checkoutUrl = `https://test.checkout.dodopayments.com/buy/${productId}?quantity=1&metadata_plan=2&redirect_url=${process.env.NEXT_PUBLIC_BASE_URL}`;
-  
-    window.location.href = checkoutUrl;
   };
 
   const checkoutWeb3Payment = async (data: any) => {
@@ -69,30 +46,6 @@ const PricingPage = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleCredentialResponse = async (response: any) => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/profile`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ credential: response.credential }),
-      }
-    );
-
-    const data = await res.json();
-
-    localStorage.setItem("scambuzzer_email", JSON.stringify(data.user.email));
-    toast.success("Logged in successfully!");
-
-    const savedPlan = localStorage.getItem("selected_plan");
-    if (savedPlan) {
-      startPayment(selectedProductId as any);
-      localStorage.removeItem("selected_plan");
-    }
-  
-    setIsLoginModalOpen(false);
   };
 
   return (
@@ -260,7 +213,6 @@ const PricingPage = () => {
           </div>
 
           {products.map((product: any) => {
-           
             return (
               <div
                 key={product?.product_id}
@@ -329,11 +281,19 @@ const PricingPage = () => {
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4 mt-4">
                   <button
-                    className="flex-1 py-3 px-4 bg-green-600 hover:bg-green-700 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
-                    onClick={() => checkoutProduct(product.product_id, 2)}
-                    disabled={loading}
+                    className={`flex-1 py-3 px-4 ${
+                      user?.subscriptionData?.plan == "2"
+                        ? "bg-gray-400"
+                        : "bg-green-600"
+                    }  hover:bg-green-700 text-white rounded-full transition-colors text-sm font-semibold shadow-md`}
+                    onClick={() => checkoutProduct(product.product_id)}
+                    disabled={loading || user?.subscriptionData?.plan == "2"}
                   >
-                    {loading ? "Processing..." : "Pay with Card"}
+                    {loading
+                      ? "Processing..."
+                      : user?.subscriptionData?.plan == "2"
+                      ? "Purchased"
+                      : "Pay with Card"}
                   </button>
 
                   <button
@@ -362,7 +322,6 @@ const PricingPage = () => {
                     {loading ? "Processing..." : "Pay with Crypto"}
                   </button>
                 </div>
-                 <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} handleCredentialResponse={handleCredentialResponse}/>
               </div>
             );
           })}
