@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createCheckoutSession } from "@/lib/copperx";
-import { fetchCurrentUser, UserData } from "../../lib/auth";
+import { useAuth } from "../../hooks/useAuth";
 
 const PricingPage = () => {
+  const { user } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<UserData | null>(null);
 
   const router = useRouter();
 
@@ -24,7 +24,6 @@ const PricingPage = () => {
       setProducts(data);
     };
     fetchData();
-    fetchCurrentUser().then((user: any) => setUser(user.data));
   }, []);
 
   const checkoutProduct = async (productId: number) => {

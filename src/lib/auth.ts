@@ -1,5 +1,3 @@
-// lib/auth.ts
-
 import axios from "axios";
 
 export interface SubscriptionData {
@@ -29,13 +27,13 @@ export const fetchCurrentUser = async () => {
       credentials: "include",
     });
     const data = await response.json();
-    return data;
+    return data?.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const logout = async () => {
+export const logoutUser = async () => {
   try {
     const response = await fetch(`${API_URL}/api/auth/logout`, {
       method: "POST",

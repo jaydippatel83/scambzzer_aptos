@@ -3,14 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import AuthModal from "../auth/AuthModal";
-import { fetchCurrentUser, UserData, logout } from "../../../lib/auth";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, loading, logout } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-
-  const [user, setUser] = useState<UserData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const getInitials = (name: string) => {
@@ -24,13 +21,6 @@ const Navbar = () => {
 
   const openAuthModal = () => setIsAuthModalOpen(true);
   const closeAuthModal = () => setIsAuthModalOpen(false);
-
-  useEffect(() => {
-    fetchCurrentUser()
-      .then((user: any) => setUser(user.data))
-      .catch((err: any) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
