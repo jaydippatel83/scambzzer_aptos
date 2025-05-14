@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AuthModal from "../auth/AuthModal";
 import { useAuth } from "../../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, loading, logout } = useAuth();
+  const { user, logout } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                   >
                     <div className="h-8 w-8 rounded-full bg-teal-500 flex items-center justify-center text-white">
                       {user?.avtar ? (
-                        <img
+                        <Image
                           src={user.avtar}
                           alt={user.name as string}
                           className="h-8 w-8 rounded-full"

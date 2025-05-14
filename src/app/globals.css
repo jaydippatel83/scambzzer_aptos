@@ -23,7 +23,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "Roboto Condensed", sans-serif;
 }
  
 html {

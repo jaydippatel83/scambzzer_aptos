@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import { fetchCurrentUser, logoutUser } from "../lib/auth";
 import type { UserData } from "../lib/auth";
 
@@ -7,7 +6,6 @@ export function useAuth() {
   const [user, setUser] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     let isMounted = true;
@@ -19,9 +17,9 @@ export function useAuth() {
           setUser(data);
           setError(null);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (isMounted) {
-          setError(err.message || "Failed to fetch user");
+          setError(err instanceof Error ? err.message : "Failed to fetch user");
           setUser(null);
         }
       }
@@ -36,10 +34,10 @@ export function useAuth() {
     try {
       await logoutUser();
       setUser(null);
-    } catch (err: any) {
-      setError(err.message || "Logout failed");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Logout failed");
     }
-  }, [router]);
+  }, []);
 
   return { user, loading, error, logout };
 }

@@ -7,22 +7,22 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-          <Link
-        href="/"
-        className="text-xl font-mono text-foreground dark:text-green-300 cursor-pointer hover:opacity-80 hover:text-white-300 transition"
-      >
-        <Image
-          src="/assets/logo.png"
-          alt="scambuzzer"
-          width={180}
-          height={38}
-          className="w-full h-full"
-        />
-      </Link>
+            <Link
+              href="/"
+              className="text-xl font-mono text-foreground dark:text-green-300 cursor-pointer hover:opacity-80 hover:text-white-300 transition"
+            >
+              <Image
+                src="/assets/logo.png"
+                alt="scambuzzer"
+                width={180}
+                height={38}
+                className="w-full h-full"
+              />
+            </Link>
           </div>
           <div className="flex gap-4">
             <a
-              href="https://twitter.com/scambuzzer"
+              href="https://x.com/scambuzzercom"
               className="text-gray-400 hover:text-gray-600"
               aria-label="X (Twitter)"
             >
@@ -37,7 +37,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/company/scambuzzer"
+              href="https://www.linkedin.com/company/scambuzzer"
               className="text-gray-400 hover:text-gray-600"
               aria-label="LinkedIn"
             >
