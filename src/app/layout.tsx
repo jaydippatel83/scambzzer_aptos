@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AptosWalletProvider } from "./providers";
 import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
+import { ToastContainer } from 'react-toastify';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         <AptosWalletProvider>
+        <ToastContainer />
           {children}
         </AptosWalletProvider>
       </body>

@@ -60,13 +60,7 @@ const Navbar = () => {
                     className="flex items-center focus:outline-none"
                   >
                     <div className="h-8 w-8 rounded-full bg-teal-500 flex items-center justify-center text-white">
-                      {user?.avtar ? (
-                        <Image
-                          src={user.avtar}
-                          alt={user.name as string}
-                          className="h-8 w-8 rounded-full"
-                        />
-                      ) : (
+                      {user && (
                         <span>{user?.name ? getInitials(user.name) : "U"}</span>
                       )}
                     </div>
