@@ -26,6 +26,9 @@ const SignIn: React.FC = () => {
         return;
       }
       toast.success("Login successful!");
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
     } finally {

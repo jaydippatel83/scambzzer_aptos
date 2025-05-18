@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 // import { createCheckoutSession } from "@/lib/copperx";
 import { useAuth } from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 interface Product {
   product_id: number;
@@ -37,9 +38,14 @@ const PricingPage = () => {
   const checkoutProduct = async (productId: number) => {
     try {
       setLoading(true);
-      // check if user have logged in.....
-      const checkoutUrl = `https://test.checkout.dodopayments.com/buy/${productId}?quantity=1&metadata_plan=2&metadata_userId=${user?.id}&redirect_url=${process.env.NEXT_PUBLIC_BASE_URL}`;
-      router.push(checkoutUrl);
+      if (user) {
+        const checkoutUrl = `https://test.checkout.dodopayments.com/buy/${productId}?quantity=1&metadata_plan=2&metadata_userId=${user?.id}&redirect_url=${process.env.NEXT_PUBLIC_BASE_URL}`;
+        router.push(checkoutUrl);
+        setLoading(false);
+      } else {
+        toast.warning("Please sign in to continue!");
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -327,7 +333,7 @@ const PricingPage = () => {
                     // }
                     disabled={loading}
                   >
-                    {loading ? "Processing..." : "Pay with Crypto"}
+                    {"Pay with Crypto"}
                   </button>
                 </div>
               </div>

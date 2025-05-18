@@ -36,6 +36,9 @@ const SignUp: React.FC = () => {
         return;
       }
       toast.success(res.message);
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       toast.error(error as any);
     } finally {

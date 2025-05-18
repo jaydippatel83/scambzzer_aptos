@@ -72,6 +72,9 @@ const Navbar = () => {
                         onClick={() => {
                           logout();
                           setIsDropdownOpen(false);
+                          setTimeout(function () {
+                            window.location.reload();
+                          }, 2000);
                         }}
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
