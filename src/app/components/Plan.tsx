@@ -298,8 +298,8 @@ const PricingPage = () => {
                     className={`flex-1 py-3 px-4 ${
                       user?.subscriptionData?.plan == "2"
                         ? "bg-gray-400"
-                        : "bg-green-600"
-                    }  hover:bg-green-700 text-white rounded-full transition-colors text-sm font-semibold shadow-md`}
+                        : "bg-green-500"
+                    }  w-full py-3 px-4 bg-scambuzzer-text  hover:bg-green-600 text-black rounded-full transition-colors`}
                     onClick={() => checkoutProduct(product.product_id)}
                     disabled={loading || user?.subscriptionData?.plan == "2"}
                   >
@@ -307,33 +307,7 @@ const PricingPage = () => {
                       ? "Processing..."
                       : user?.subscriptionData?.plan == "2"
                       ? "Purchased"
-                      : "Pay with Card"}
-                  </button>
-
-                  <button
-                    className="flex-1 py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
-                    // onClick={() =>
-                    //   checkoutWeb3Payment({
-                    //     productData: {
-                    //       metadata: {
-                    //         start_date: product.created_at,
-                    //         end_date: "",
-                    //         promocode: "",
-                    //         product: "Scambuzzer",
-                    //         email: "web3wizard@gmail.com",
-                    //         name: product.name,
-                    //         url: process.env.NEXT_PUBLIC_BASE_URL,
-                    //       },
-                    //       name: product.name,
-                    //       description: product.description,
-                    //       unitLabel: "",
-                    //       url: process.env.NEXT_PUBLIC_BASE_URL,
-                    //     },
-                    //   })
-                    // }
-                    disabled={loading}
-                  >
-                    {"Pay with Crypto"}
+                      : "Get Started"}
                   </button>
                 </div>
               </div>
