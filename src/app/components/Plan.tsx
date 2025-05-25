@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 // import { createCheckoutSession } from "@/lib/copperx";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import AuthModal from "./auth/AuthModal";
 
 interface Product {
   product_id: number;
@@ -18,6 +19,10 @@ const PricingPage = () => {
   const { user } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const openAuthModal = () => setIsAuthModalOpen(true);
+  const closeAuthModal = () => setIsAuthModalOpen(false);
 
   const router = useRouter();
 
@@ -43,7 +48,7 @@ const PricingPage = () => {
         router.push(checkoutUrl);
         setLoading(false);
       } else {
-        toast.warning("Please sign in to continue!");
+        openAuthModal();
         setLoading(false);
       }
     } catch (error) {
@@ -221,9 +226,7 @@ const PricingPage = () => {
                 <span>Real-Time Protection</span>
               </li>
             </ul>
-            <button className="w-full py-3 px-4 bg-scambuzzer-text bg-green-500 hover:bg-green-600 text-black rounded-full transition-colors">
-              Get Started
-            </button>
+            <p className="text-red-500  justify-center flex p-2">Coming Soon</p>
           </div>
 
           {products.map((product: Product) => {
@@ -232,7 +235,7 @@ const PricingPage = () => {
                 key={product?.product_id}
                 className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold mb-4">Lifetime</h3>
+                <h3 className="text-xl font-bold mb-4">Plus - Lifetime</h3>
 
                 <div className="text-4xl font-bold mb-4">
                   $69<span className="text-gray-500 text-lg">/once</span>
@@ -313,6 +316,7 @@ const PricingPage = () => {
               </div>
             );
           })}
+          <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
 
           {/* Lifetime Plan */}
         </div>
