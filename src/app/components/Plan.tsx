@@ -44,8 +44,9 @@ const PricingPage = () => {
     try {
       setLoading(true);
       if (user) {
-        const checkoutUrl = `https://test.checkout.dodopayments.com/buy/${productId}?quantity=1&metadata_plan=2&metadata_userId=${user?.id}&redirect_url=${process.env.NEXT_PUBLIC_BASE_URL}`;
+        const checkoutUrl = `https://checkout.dodopayments.com/buy/${productId}?quantity=1&metadata_plan=2&metadata_userId=${user?.id}&redirect_url=${process.env.NEXT_PUBLIC_BASE_URL}`;
         router.push(checkoutUrl);
+
         setLoading(false);
       } else {
         openAuthModal();
@@ -74,7 +75,6 @@ const PricingPage = () => {
           Choose Your Protection Plan
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Free Plan */}
           <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
             <h3 className="text-xl font-bold mb-4">Free</h3>
             <div className="text-4xl font-bold mb-4">
