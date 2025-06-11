@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-// import { createCheckoutSession } from "@/lib/copperx";
+import { createCheckoutSession } from "@/lib/copperx";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import AuthModal from "./auth/AuthModal";
@@ -57,16 +57,21 @@ const PricingPage = () => {
     }
   };
 
-  // const checkoutWeb3Payment = async (data: any) => {
-  //   try {
-  //     const { sessionData } = await createCheckoutSession({
-  //       data,
-  //     });
-  //     window.location.href = sessionData.url;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const checkoutWeb3Payment = async (data: any) => {
+    try {
+      // plan, userId
+      if (user) {
+        const { sessionData } = await createCheckoutSession({
+          data,
+        });
+        window.location.href = sessionData.url;
+      } else {
+        openAuthModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section id="pricing" className="py-20 bg-white">
@@ -310,7 +315,33 @@ const PricingPage = () => {
                       ? "Processing..."
                       : user?.subscriptionData?.plan == "2"
                       ? "Purchased"
-                      : "Get Started"}
+                      : "Pay with Card"}
+                  </button>
+
+                  <button
+                    className="flex-1 py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
+                    onClick={() =>
+                      checkoutWeb3Payment({
+                        productData: {
+                          metadata: {
+                            start_date: product.created_at,
+                            end_date: "",
+                            promocode: "",
+                            product: "Scambuzzer",
+                            email: process.env.NEXT_PUBLIC_COPERX_EMAIL,
+                            name: product.name,
+                            url: process.env.NEXT_PUBLIC_BASE_URL,
+                          },
+                          name: product.name,
+                          description: product.description,
+                          unitLabel: "",
+                          url: process.env.NEXT_PUBLIC_BASE_URL,
+                        },
+                      })
+                    }
+                    disabled={loading}
+                  >
+                    {loading ? "Processing..." : "Pay with Crypto"}
                   </button>
                 </div>
               </div>
