@@ -115,8 +115,8 @@ const PaymentSuccessContent = () => {
               Payment Successful!
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Your crypto payment has been processed successfully. Order
-              details and transaction information are below.
+              Your crypto payment has been processed successfully. Order details
+              and transaction information are below.
             </p>
           </div>
 
