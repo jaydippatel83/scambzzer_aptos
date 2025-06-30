@@ -16,26 +16,30 @@ const LandingPage = () => {
               it happens. ScamBuzzer detects, alerts, and protects you before
               it&apos;s too late to act.
             </p>
-            <button className="bg-scambuzzer-text font-black text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg inline-flex items-center gap-2 transition-colors">
-              {/* href="https://chromewebstore.google.com/detail/bongbeoheinfbmhcmbipkejailmkmibc/preview?hl=en-GB&authuser=0" */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-download w-5 h-5"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" x2="12" y1="15" y2="3" />
-              </svg>
-              Add to Chrome & Brave
-            </button>
+            <a
+              href="https://chromewebstore.google.com/detail/scambuzzer/gdaphenpldlcgghlekhhbdilgmblcmlh"
+              target="_blank"
+            >
+              <button className="bg-scambuzzer-text font-black text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg inline-flex items-center gap-2 transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-download w-5 h-5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+                Add to Chrome & Brave
+              </button>
+            </a>
           </div>
         </div>
       </section>
@@ -140,25 +144,30 @@ const LandingPage = () => {
             <p className="text-xl text-gray-600 mb-8">
               Join thousands of users protecting their assets with ScamBuzzer.
             </p>
-            <button className="bg-scambuzzer-text text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg font-medium inline-flex items-center gap-2 transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-download w-5 h-5"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" x2="12" y1="15" y2="3" />
-              </svg>
-              Download Now
-            </button>
+            <a
+              href="https://chromewebstore.google.com/detail/scambuzzer/gdaphenpldlcgghlekhhbdilgmblcmlh"
+              target="_blank"
+            >
+              <button className="bg-scambuzzer-text text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg font-medium inline-flex items-center gap-2 transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-download w-5 h-5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+                Download Now
+              </button>
+            </a>
           </div>
         </div>
       </section>
