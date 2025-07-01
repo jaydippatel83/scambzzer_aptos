@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function ConfirmStatusPage() {
-  const params = useSearchParams();
   const router = useRouter();
   const [message, setMessage] = useState("Verifying your email...");
 
