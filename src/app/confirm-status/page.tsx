@@ -32,7 +32,9 @@ export default function ConfirmStatusPage() {
         const data = await res.json();
 
         if (data.success) {
-          setMessage("✅ Email confirmed! You can now go to the homepage.");
+          setMessage(
+            "✅ Your email has been successfully confirmed. You can now log in to the ScamBuzzer Chrome extension!"
+          );
           setConfirmed(true);
         } else {
           setMessage(`❌ Confirmation failed: ${data.error}`);
