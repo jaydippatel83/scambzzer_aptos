@@ -6,12 +6,11 @@ import { useRouter } from "next/navigation";
 export default function ConfirmStatusPage() {
   const router = useRouter();
   const [message, setMessage] = useState("Verifying your email...");
-  const [confirmed, setConfirmed] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const token_hash = urlParams.get("token_hash");
-    const type = urlParams.get("type") || "email";
+    const token_hash = urlParams.get("code"); // 'code' from URL acts as token_hash
+    const type = "email"; // Required for verifyOtp
 
     if (!token_hash) {
       setMessage("❌ Invalid confirmation link.");
@@ -32,10 +31,7 @@ export default function ConfirmStatusPage() {
         const data = await res.json();
 
         if (data.success) {
-          setMessage(
-            "✅ Your email has been successfully confirmed. You can now log in to the ScamBuzzer Chrome extension!"
-          );
-          setConfirmed(true);
+          setMessage("✅ Email confirmed! You can now log in to ScamBuzzer.");
         } else {
           setMessage(`❌ Confirmation failed: ${data.error}`);
         }
@@ -47,21 +43,15 @@ export default function ConfirmStatusPage() {
     verifyEmail();
   }, []);
 
-  const goHome = () => {
-    router.push("/");
-  };
-
   return (
     <div className="p-8 text-center">
-      <h1 className="text-xl font-semibold mb-4">{message}</h1>
-      {confirmed && (
-        <button
-          onClick={goHome}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-        >
-          Go to Home
-        </button>
-      )}
+      <h1 className="text-xl font-semibold">{message}</h1>
+      <button
+        onClick={() => router.push("/")}
+        className="mt-6 px-4 py-2 bg-black text-white rounded"
+      >
+        Go to Home
+      </button>
     </div>
   );
 }
