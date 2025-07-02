@@ -20,7 +20,7 @@ export default function ConfirmStatusPage() {
     const verifyEmail = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/confirm`,
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/confirm`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
