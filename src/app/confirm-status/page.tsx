@@ -9,8 +9,8 @@ export default function ConfirmStatusPage() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const token_hash = urlParams.get("code"); // 'code' from URL acts as token_hash
-    const type = "email"; // Required for verifyOtp
+    const token_hash = urlParams.get("token_hash"); // 'code' from URL acts as token_hash
+    const type = urlParams.get("type"); // Required for verifyOtp
 
     if (!token_hash) {
       setMessage("❌ Invalid confirmation link.");
