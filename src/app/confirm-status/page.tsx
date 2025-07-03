@@ -31,7 +31,9 @@ export default function ConfirmStatusPage() {
         const data = await res.json();
 
         if (data.success) {
-          setMessage("✅ Email confirmed! You can now log in to ScamBuzzer.");
+          setMessage(
+            "✅ Email confirmed! You can now log in to ScamBuzzer browser extension!."
+          );
         } else {
           setMessage(`❌ Confirmation failed: ${data.error}`);
         }
