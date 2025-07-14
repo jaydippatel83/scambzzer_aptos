@@ -139,13 +139,6 @@ const SignUp: React.FC = () => {
         <hr className="flex-grow border-t border-gray-300" />
       </div>
 
-      <div className="mt-6 text-center text-sm text-gray-600">
-        Already have an account?{" "}
-        <a href="#" className="text-blue-600 hover:text-blue-800">
-          Sign in
-        </a>
-      </div>
-
       <p className="text-xs text-center text-gray-600 mt-6">
         By signing up, you agree to our{" "}
         <a href="#" className="text-blue-600 hover:text-blue-800">

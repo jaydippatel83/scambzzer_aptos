@@ -102,7 +102,7 @@ const PricingPage = () => {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
-                <span>Scam Link Lookup (15 sites/month)</span>
+                <span>Scam Link Lookup (200 unique sites/month)</span>
               </li>
               <li className="flex items-start gap-2">
                 <svg

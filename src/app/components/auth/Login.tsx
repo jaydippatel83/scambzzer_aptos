@@ -120,13 +120,6 @@ const SignIn: React.FC = () => {
           {isLoading ? "Signing in..." : "Sign In"}
         </button>
       </form>
-
-      <div className="mt-6 text-center text-sm text-gray-600">
-        Don't have an account?{" "}
-        <a href="#" className="text-blue-600 hover:text-blue-800">
-          Sign up
-        </a>
-      </div>
     </div>
   );
 };
