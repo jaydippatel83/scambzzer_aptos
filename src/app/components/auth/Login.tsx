@@ -106,11 +106,11 @@ const SignIn: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-right">
+        {/* <div className="text-right">
           <a href="#" className="text-sm text-blue-600 hover:text-blue-800">
             Forgot password?
           </a>
-        </div>
+        </div> */}
 
         <button
           type="submit"
