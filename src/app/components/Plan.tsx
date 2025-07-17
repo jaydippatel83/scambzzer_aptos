@@ -143,7 +143,14 @@ const PricingPage = () => {
                 </span>
               </li>
             </ul>
-            <button className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full transition-colors">
+            <button
+              onClick={() => {
+                window.open(
+                  `https://chromewebstore.google.com/detail/scambuzzer/${process.env.NEXT_PUBLIC_EXTENSION_ID}`
+                );
+              }}
+              className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full transition-colors"
+            >
               Download Free
             </button>
           </div>

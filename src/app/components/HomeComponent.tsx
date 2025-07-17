@@ -17,7 +17,7 @@ const LandingPage = () => {
               it&apos;s too late to act.
             </p>
             <a
-              href="https://chromewebstore.google.com/detail/scambuzzer/gdaphenpldlcgghlekhhbdilgmblcmlh"
+              href={`https://chromewebstore.google.com/detail/scambuzzer/${process.env.NEXT_PUBLIC_EXTENSION_ID}`}
               target="_blank"
             >
               <button className="bg-scambuzzer-text font-black text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg inline-flex items-center gap-2 transition-colors">
@@ -145,7 +145,7 @@ const LandingPage = () => {
               Join thousands of users protecting their assets with ScamBuzzer.
             </p>
             <a
-              href="https://chromewebstore.google.com/detail/scambuzzer/gdaphenpldlcgghlekhhbdilgmblcmlh"
+              href={`https://chromewebstore.google.com/detail/scambuzzer/${process.env.NEXT_PUBLIC_EXTENSION_ID}`}
               target="_blank"
             >
               <button className="bg-scambuzzer-text text-black bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg font-medium inline-flex items-center gap-2 transition-colors">
