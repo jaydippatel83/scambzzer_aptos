@@ -4,13 +4,11 @@ import Layout from "@/app/components/layout/Layout";
 import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams, redirect } from "next/navigation";
 import { toast } from "react-toastify";
-import { retrieveCheckoutSession } from "@/lib/copperx";
 import { useAuth } from "../../../hooks/useAuth";
 
 interface OrderItem {
   id: string;
   name: string;
-  price: number;
   quantity: number;
 }
 
@@ -24,36 +22,29 @@ const PaymentSuccessContent = () => {
     async function fetchData() {
       try {
         if (!sessionId) return;
-        const { data } = await retrieveCheckoutSession(sessionId);
-        console.log(data, "data----> web3 crypto....");
-        setPaymentDetails(data);
-        if (data) {
-          fetch(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/payments/webhook/crypto?plan=2`,
-            {
-              method: "POST",
-              credentials: "include",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                userId: user?.id,
-                paymentId: data.id,
-                amount: data.amountTotal,
-              }),
+        fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/payments/webhook/crypto?plan=2&sessionId=${sessionId}`,
+          {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(json);
+            if (json.success) {
+              setPaymentDetails(json?.data);
+              toast.success("Subscription activated!");
+              setTimeout(() => {
+                redirect("/");
+              }, 3000);
+            } else {
+              toast.error("Payment not verified yet.");
             }
-          )
-            .then((res) => res.json())
-            .then((json) => {
-              console.log(json);
-              if (json.success) {
-                toast.success("Subscription activated!");
-                return redirect("/");
-              } else {
-                toast.error("Payment not verified yet.");
-              }
-            });
-        }
+          });
       } catch (err) {
         console.error("Fetch error:", err);
       }
@@ -66,17 +57,9 @@ const PaymentSuccessContent = () => {
     {
       id: paymentDetails && paymentDetails.id,
       name: "LifeTime - Plus Plan",
-      price: 0.001,
       quantity: 1,
     },
   ];
-
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-  const tax = subtotal;
-  const total = subtotal + tax;
 
   function formatToLongDate(isoString: string): string {
     const date = new Date(isoString);
@@ -192,7 +175,7 @@ const PaymentSuccessContent = () => {
                       </p>
                     </div>
                     <span className="text-lg font-semibold text-gray-900">
-                      ${item.price.toFixed(2)}
+                      ${paymentDetails.amountFee}
                     </span>
                   </div>
                 ))}
@@ -201,15 +184,17 @@ const PaymentSuccessContent = () => {
               <div className="space-y-4 pt-6 border-t border-gray-200">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>${paymentDetails.amountSubtotal}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Tax</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <span>${paymentDetails.amountDetails.amountTax}</span>
                 </div>
                 <div className="flex justify-between text-xl font-bold text-gray-900 pt-4 border-t border-gray-200">
                   <span>Total Paid</span>
-                  <span className="text-green-500">${total.toFixed(2)}</span>
+                  <span className="text-green-500">
+                    ${paymentDetails.amountTotal}
+                  </span>
                 </div>
               </div>
             </div>

@@ -8,7 +8,7 @@ function convertToUSDTUnits(amountUsd: number): string {
 export async function createCheckoutSession(data: any) {
   const options = {
     method: "POST",
-    url: "https://api.copperx.io/api/v1/checkout/sessions",
+    url: "https://api.copperx.dev/api/v1/checkout/sessions",
     headers: {
       accept: "application/json",
       "content-type": "application/json",
@@ -20,9 +20,9 @@ export async function createCheckoutSession(data: any) {
         data: [
           {
             priceData: {
-              currency: "usdt",
+              currency: "eth",
               productData: data.productData,
-              unitAmount: convertToUSDTUnits(69),
+              unitAmount: convertToUSDTUnits(0.001),
               type: "one_time",
               productId: process.env.NEXT_PUBLIC_PRODUCT_ID,
             },
@@ -71,18 +71,4 @@ export async function updateSession(obj: any) {
   } catch (error) {
     console.error("Error updating session:", error);
   }
-}
-
-export async function retrieveCheckoutSession(sessionId: any) {
-  const options = {
-    method: "GET",
-    url: `https://api.copperx.dev/api/v1/checkout/sessions/${sessionId}`,
-    headers: {
-      accept: "application/json",
-      authorization: `Bearer ${process.env.NEXT_PUBLIC_API_COPPERX}`,
-    },
-  };
-
-  const response = await axios.request(options);
-  return { data: response.data, error: null };
 }
