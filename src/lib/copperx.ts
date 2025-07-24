@@ -8,7 +8,7 @@ function convertToUSDTUnits(amountUsd: number): string {
 export async function createCheckoutSession(data: any) {
   const options = {
     method: "POST",
-    url: "https://api.copperx.dev/api/v1/checkout/sessions",
+    url: "https://api.copperx.io/api/v1/checkout/sessions",
     headers: {
       accept: "application/json",
       "content-type": "application/json",
@@ -20,9 +20,9 @@ export async function createCheckoutSession(data: any) {
         data: [
           {
             priceData: {
-              currency: "eth",
+              currency: "usdt",
               productData: data.productData,
-              unitAmount: convertToUSDTUnits(0.001),
+              unitAmount: convertToUSDTUnits(69),
               type: "one_time",
               productId: process.env.NEXT_PUBLIC_PRODUCT_ID,
             },
