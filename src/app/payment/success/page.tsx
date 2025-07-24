@@ -34,7 +34,6 @@ const PaymentSuccessContent = () => {
         )
           .then((res) => res.json())
           .then((json) => {
-            console.log(json);
             if (json.success) {
               setPaymentDetails(json?.data);
               toast.success("Subscription activated!");
