@@ -22,7 +22,7 @@ export async function createCheckoutSession(data: any) {
             priceData: {
               currency: "usdc",
               productData: data.productData,
-              unitAmount: convertToUSDTUnits(69),
+              unitAmount: convertToUSDTUnits(1),
               type: "one_time",
               productId: process.env.NEXT_PUBLIC_PRODUCT_ID,
             },
