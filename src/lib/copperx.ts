@@ -35,7 +35,7 @@ export async function createCheckoutSession(data: any) {
       //   paymentSetting: {allowSwap: true, preferredChainId: 137},
       afterCompletionConfirmMsg: "Payment success",
       successUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/success`,
-      cancelUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/cancel`,
+      cancelUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/fail`,
     },
   };
 
