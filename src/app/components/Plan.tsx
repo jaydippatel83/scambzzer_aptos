@@ -309,47 +309,50 @@ const PricingPage = () => {
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                  <button
-                    className={`flex-1 py-3 px-4 ${
-                      user?.subscriptionData?.plan == "2"
-                        ? "bg-gray-400"
-                        : "bg-green-500"
-                    }  w-full py-3 px-4 bg-scambuzzer-text  hover:bg-green-600 text-black rounded-full transition-colors`}
-                    onClick={() => checkoutProduct(product.product_id)}
-                    disabled={loading || user?.subscriptionData?.plan == "2"}
-                  >
-                    {loading
-                      ? "Processing..."
-                      : user?.subscriptionData?.plan == "2"
-                      ? "Purchased"
-                      : "Pay with Card"}
-                  </button>
+                  {user?.subscriptionData?.plan === 2 ? (
+                    <button
+                      className="w-full py-3 px-4 bg-green-400 text-white rounded-full cursor-not-allowed"
+                      disabled
+                    >
+                      Current Plan
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        className="flex-1 py-3 px-4 bg-green-500 hover:bg-green-600 text-black rounded-full transition-colors"
+                        onClick={() => checkoutProduct(product.product_id)}
+                        disabled={loading}
+                      >
+                        {loading ? "Processing..." : "Pay with Card"}
+                      </button>
 
-                  <button
-                    className="flex-1 py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
-                    onClick={() =>
-                      checkoutWeb3Payment({
-                        productData: {
-                          metadata: {
-                            start_date: product.created_at,
-                            end_date: "",
-                            promocode: "",
-                            product: "Scambuzzer",
-                            email: process.env.NEXT_PUBLIC_COPERX_EMAIL,
-                            name: product.name,
-                            url: process.env.NEXT_PUBLIC_BASE_URL,
-                          },
-                          name: product.name,
-                          description: product.description,
-                          unitLabel: "",
-                          url: process.env.NEXT_PUBLIC_BASE_URL,
-                        },
-                      })
-                    }
-                    disabled={loading}
-                  >
-                    {loading ? "Processing..." : "Pay with Crypto"}
-                  </button>
+                      <button
+                        className="flex-1 py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
+                        onClick={() =>
+                          checkoutWeb3Payment({
+                            productData: {
+                              metadata: {
+                                start_date: product.created_at,
+                                end_date: "",
+                                promocode: "",
+                                product: "Scambuzzer",
+                                email: process.env.NEXT_PUBLIC_COPERX_EMAIL,
+                                name: product.name,
+                                url: process.env.NEXT_PUBLIC_BASE_URL,
+                              },
+                              name: product.name,
+                              description: product.description,
+                              unitLabel: "",
+                              url: process.env.NEXT_PUBLIC_BASE_URL,
+                            },
+                          })
+                        }
+                        disabled={loading}
+                      >
+                        {loading ? "Processing..." : "Pay with Crypto"}
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             );

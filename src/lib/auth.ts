@@ -1,5 +1,5 @@
 export interface SubscriptionData {
-  plan: string;
+  plan: number;
   paymentType: string;
   paymentId: string;
   status: string;
