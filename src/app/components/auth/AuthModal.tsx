@@ -8,24 +8,23 @@ interface AuthModalProps {
 }
 
 const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
+  const [activeTab, setActiveTab] = useState<"login" | "register">("register");
 
   if (!isOpen) return null;
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      onClick={handleBackdropClick}
+    >
       <div className="bg-white rounded-lg w-full max-w-md overflow-hidden relative">
         <div className="flex border-b">
-          <button
-            className={`w-1/2 py-4 font-medium text-lg ${
-              activeTab === "login"
-                ? "text-teal-500 border-b-2 border-teal-500"
-                : "text-gray-500"
-            }`}
-            onClick={() => setActiveTab("login")}
-          >
-            Login
-          </button>
           <button
             className={`w-1/2 py-4 font-medium text-lg ${
               activeTab === "register"
@@ -37,13 +36,24 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             Register
           </button>
           <button
-            className="h-6 w-6 rounded-full flex items-center justify-center hover:bg-gray-100"
+            className={`w-1/2 py-4 font-medium text-lg ${
+              activeTab === "login"
+                ? "text-teal-500 border-b-2 border-teal-500"
+                : "text-gray-500"
+            }`}
+            onClick={() => setActiveTab("login")}
+          >
+            Login
+          </button>
+
+          <button
+            className="h-6 w-6 rounded-full m-3 border-black border-2 flex items-center justify-center hover:bg-gray-100"
             onClick={onClose}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="50"
+              height="50"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

@@ -88,7 +88,7 @@ const Navbar = () => {
                   onClick={openAuthModal}
                   className="text-gray-600 hover:text-gray-900"
                 >
-                  Sign In
+                  Sign Up
                 </button>
               )}
             </div>
