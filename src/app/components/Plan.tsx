@@ -79,288 +79,301 @@ const PricingPage = () => {
         <h2 className="text-3xl font-black text-center mb-12">
           Choose Your Protection Plan
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-bold mb-4">Free</h3>
-            <div className="text-4xl font-bold mb-4">
-              $0<span className="text-gray-500 text-lg">/month</span>
-            </div>
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span>Scam Link Lookup (200 unique sites/month)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span>Scam Case Studies</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-x w-5 h-5 text-red-500 mt-1"
-                >
-                  <line x1="18" x2="6" y1="6" y2="18" />
-                  <line x1="6" x2="18" y1="6" y2="18" />
-                </svg>
-                <span className="text-gray-500">
-                  Auto-Warning on Scam Sites
-                </span>
-              </li>
-            </ul>
-            <button
-              onClick={() => {
-                window.open(
-                  `https://chromewebstore.google.com/detail/scambuzzer/${process.env.NEXT_PUBLIC_EXTENSION_ID}`
-                );
-              }}
-              className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full transition-colors"
-            >
-              Download Free
-            </button>
-          </div>
-
-          {/* Plus Monthly Plan */}
-          <div className="bg-white border-2 border-scambuzzer-text rounded-2xl p-8 hover:shadow-lg transition-shadow relative">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-scambuzzer-text text-black bg-green-500 px-4 py-1 rounded-full text-sm font-bold">
-              Most Popular
-            </div>
-            <h3 className="text-xl font-bold mb-4">Plus Monthly</h3>
-            <div className="text-4xl font-bold mb-4">
-              $9<span className="text-gray-500 text-lg">/month</span>
-            </div>
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span>Everything in Free</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span>Unlimited Scam Link Lookup</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span>Auto-Warning on Scam Sites</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span>Real-Time Protection</span>
-              </li>
-            </ul>
-            <p className="text-red-500  justify-center flex p-2">Coming Soon</p>
-          </div>
-
-          {products.map((product: Product) => {
-            return (
-              <div
-                key={product?.product_id}
-                className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow"
+        {products && products.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Free Plan */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold mb-4">Free</h3>
+              <div className="text-4xl font-bold mb-4">
+                $0<span className="text-gray-500 text-lg">/month</span>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <span>Scam Link Lookup (200 unique sites/month)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <span>Scam Case Studies</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-x w-5 h-5 text-red-500 mt-1"
+                  >
+                    <line x1="18" x2="6" y1="6" y2="18" />
+                    <line x1="6" x2="18" y1="6" y2="18" />
+                  </svg>
+                  <span className="text-gray-500">
+                    Auto-Warning on Scam Sites
+                  </span>
+                </li>
+              </ul>
+              <button
+                onClick={() => {
+                  window.open(
+                    `https://chromewebstore.google.com/detail/scambuzzer/${process.env.NEXT_PUBLIC_EXTENSION_ID}`
+                  );
+                }}
+                className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-full transition-colors"
               >
-                <h3 className="text-xl font-bold mb-4">Plus - Lifetime</h3>
+                Download Free
+              </button>
+            </div>
 
-                <div className="text-4xl font-bold mb-4">
-                  $69<span className="text-gray-500 text-lg">/once</span>
-                </div>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                    <span>Everything in Plus</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                    <span>Early Access Features</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                    <span>Save 55% vs Monthly</span>
-                  </li>
-                </ul>
-                <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                  {user?.subscriptionData?.plan === 2 ? (
-                    <button
-                      className="w-full py-3 px-4 bg-green-400 text-white rounded-full cursor-not-allowed"
-                      disabled
-                    >
-                      Current Plan
-                    </button>
-                  ) : (
-                    <>
-                      <button
-                        className="flex-1 py-3 px-4 bg-green-500 hover:bg-green-600 text-black rounded-full transition-colors"
-                        onClick={() => checkoutProduct(product.product_id)}
-                        disabled={loading}
+            {/* Plus Monthly Plan */}
+            <div className="bg-white border-2 border-scambuzzer-text rounded-2xl p-8 hover:shadow-lg transition-shadow relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-scambuzzer-text text-black bg-green-500 px-4 py-1 rounded-full text-sm font-bold">
+                Most Popular
+              </div>
+              <h3 className="text-xl font-bold mb-4">Plus Monthly</h3>
+              <div className="text-4xl font-bold mb-4">
+                $9<span className="text-gray-500 text-lg">/month</span>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <span>Everything in Free</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <span>Unlimited Scam Link Lookup</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <span>Auto-Warning on Scam Sites</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <span>Real-Time Protection</span>
+                </li>
+              </ul>
+              <p className="text-red-500  justify-center flex p-2">
+                Coming Soon
+              </p>
+            </div>
+
+            {products.map((product: Product) => {
+              return (
+                <div
+                  key={product?.product_id}
+                  className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow"
+                >
+                  <h3 className="text-xl font-bold mb-4">Plus - Lifetime</h3>
+
+                  <div className="text-4xl font-bold mb-4">
+                    $69<span className="text-gray-500 text-lg">/once</span>
+                  </div>
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start gap-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
                       >
-                        {loading ? "Processing..." : "Pay with Card"}
-                      </button>
-
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </svg>
+                      <span>Everything in Plus</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                      >
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </svg>
+                      <span>Early Access Features</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-check-circle w-5 h-5 text-green-500 mt-1"
+                      >
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </svg>
+                      <span>Save 55% vs Monthly</span>
+                    </li>
+                  </ul>
+                  <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                    {user?.subscriptionData?.plan === 2 ? (
                       <button
-                        className="flex-1 py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
-                        onClick={() =>
-                          checkoutWeb3Payment({
-                            productData: {
-                              metadata: {
-                                start_date: product.created_at,
-                                end_date: "",
-                                promocode: "",
-                                product: "Scambuzzer",
-                                email: process.env.NEXT_PUBLIC_COPERX_EMAIL,
+                        className="w-full py-3 px-4 bg-green-400 text-white rounded-full cursor-not-allowed"
+                        disabled
+                      >
+                        Current Plan
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          className="flex-1 py-3 px-4 bg-green-500 hover:bg-green-600 text-black rounded-full transition-colors"
+                          onClick={() => checkoutProduct(product.product_id)}
+                          disabled={loading}
+                        >
+                          {loading ? "Processing..." : "Pay with Card"}
+                        </button>
+
+                        <button
+                          className="flex-1 py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full transition-colors text-sm font-semibold shadow-md"
+                          onClick={() =>
+                            checkoutWeb3Payment({
+                              productData: {
+                                metadata: {
+                                  start_date: product.created_at,
+                                  end_date: "",
+                                  promocode: "",
+                                  product: "Scambuzzer",
+                                  email: process.env.NEXT_PUBLIC_COPERX_EMAIL,
+                                  name: product.name,
+                                  url: process.env.NEXT_PUBLIC_BASE_URL,
+                                },
                                 name: product.name,
+                                description: product.description,
+                                unitLabel: "",
                                 url: process.env.NEXT_PUBLIC_BASE_URL,
                               },
-                              name: product.name,
-                              description: product.description,
-                              unitLabel: "",
-                              url: process.env.NEXT_PUBLIC_BASE_URL,
-                            },
-                          })
-                        }
-                        disabled={loading}
-                      >
-                        {loading ? "Processing..." : "Pay with Crypto"}
-                      </button>
-                    </>
-                  )}
+                            })
+                          }
+                          disabled={loading}
+                        >
+                          {loading ? "Processing..." : "Pay with Crypto"}
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-          <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
+              );
+            })}
+            <AuthModal
+              isOpen={isAuthModalOpen}
+              onClose={closeAuthModal}
+              activeTab={"login"}
+            />
 
-          {/* Lifetime Plan */}
-        </div>
+            {/* Lifetime Plan */}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center h-64">
+            <div className="w-12 h-12 border-4 border-scambuzzer-text border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
       </div>
     </section>
   );

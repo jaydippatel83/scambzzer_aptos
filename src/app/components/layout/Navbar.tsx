@@ -9,6 +9,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
 
   const getInitials = (name: string) => {
     return name
@@ -84,17 +85,37 @@ const Navbar = () => {
                   )}
                 </div>
               ) : (
-                <button
-                  onClick={openAuthModal}
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Sign Up
-                </button>
+                <div className="justify-between d-flex">
+                  <button
+                    onClick={() => {
+                      openAuthModal();
+                      setActiveTab("login");
+                    }}
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    Login
+                  </button>
+                  &nbsp; &nbsp; &nbsp;
+                  <button
+                    onClick={() => {
+                      openAuthModal();
+                      setActiveTab("register");
+                    }}
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    Sign Up
+                  </button>
+                </div>
               )}
             </div>
           </nav>
         </div>
-        <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
       </div>
     </header>
   );

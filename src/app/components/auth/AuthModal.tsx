@@ -1,14 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SignIn from "./Login";
 import SignUp from "./SignUp";
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
+  activeTab: "login" | "register";
+  setActiveTab?: (activeTab: "login" | "register") => void; // Corrected type
 }
 
-const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState<"login" | "register">("register");
+const AuthModal: React.FC<AuthModalProps> = ({
+  isOpen,
+  onClose,
+  activeTab,
+  setActiveTab,
+}) => {
+  const [internalActiveTab, setInternalActiveTab] = useState<
+    "login" | "register"
+  >(activeTab || "login");
+
+  useEffect(() => {
+    if (activeTab) {
+      setInternalActiveTab(activeTab);
+    }
+  }, [activeTab]);
+
+  const handleTabChange = (tab: "login" | "register") => {
+    if (setActiveTab) {
+      // If the parent provided a setter, use it.
+      setActiveTab(tab);
+    } else {
+      // If no setter was provided, manage state internally (uncontrolled component)
+      setInternalActiveTab(tab);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -27,21 +52,21 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         <div className="flex border-b">
           <button
             className={`w-1/2 py-4 font-medium text-lg ${
-              activeTab === "register"
+              internalActiveTab === "register"
                 ? "text-teal-500 border-b-2 border-teal-500"
                 : "text-gray-500"
             }`}
-            onClick={() => setActiveTab("register")}
+            onClick={() => handleTabChange("register")}
           >
             Register
           </button>
           <button
             className={`w-1/2 py-4 font-medium text-lg ${
-              activeTab === "login"
+              internalActiveTab === "login"
                 ? "text-teal-500 border-b-2 border-teal-500"
                 : "text-gray-500"
             }`}
-            onClick={() => setActiveTab("login")}
+            onClick={() => handleTabChange("login")}
           >
             Login
           </button>
@@ -68,7 +93,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div className="p-6">
-          {activeTab === "login" ? <SignIn /> : <SignUp />}
+          {internalActiveTab === "login" ? <SignIn /> : <SignUp />}
         </div>
       </div>
     </div>
